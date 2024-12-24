@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'app/css/style_app.css' %}" type="text/css" rel="stylesheet">
+<link rel="icon" href="data:;base64,=">
+    <script src="{% static 'app/js/tinymce.min.js' %}"></script>
+    {{ form.media }}
+<!--    <link href="{% static 'app/css/navgor.css' %}" type="text/css" rel="stylesheet">-->
+</head>
+<body>
+    <header class="container" id="header">
+        <img src="{% static 'app/img/logo.png' %}" width="110px" height="100px"> <span class="logo">Виноград</span>
+        
+    </header>
+
+    <nav class="container" id="navigator_top">
+        <ul class="menu-main" id="home">
+            <li><a href="/"> <i class="fa fa-home fa-fw"></i>Home </a></li>
+        {% if request.user.is_authenticated %}
+            <li><a href="/jornal/">Журнал работы</a></li>
+        {% else %}
+             <li></li>
+        {% endif %}
+        </ul>
+        <ul class="menu-main" id="menu">
+            <li><a href="/sorts/"> Сорта </a></li>
+            <li><a href="/preparats/" > Препараты </a></li>
+            <li><a href="/dung/"> Удобрения </a></li>
+            <li><a href="/sickpest/"> Болезни и вредители </a></li>
+        </ul>
+    </nav>
+    <section class="container" id="content">
+        <aside id="left">
+{% block left %}
+
+<!-- {% include 'app/enter.html' %}-->
+{% endblock %}
+
+        </aside>
+        <section id="main">
+{% block content %}
+            <article>
+                основной контент
+            </article>
+{% endblock %}
+        </section>
+    </section>
+
+
+    <footer class="container" id="podval">
+         <span style="color: #3b635d; font-size:12px ">E&F &copy; 2024</span>
+    </footer>
+</body>
+</html>
