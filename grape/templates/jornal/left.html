@@ -1,27 +1,32 @@
 
 
-<aside class="left">
-{% if request.user.is_authenticated %}
-    <p><span style="color: #3b635d; font-size:12px ">User: {{ request.user.username}}</span><br>
-  <a href="{% url 'logout' %}"><span style="font-size:12px ">Выход</span></a></p>
-{% endif %}
+
 <hr>
   <p><a href="/jornal/add_place">Добавить место</a></p>
 <hr>
-<div>
-  <h5>Массовые операции:</h5>
-  <ul style="list-style-type:none;">
-    <li><a href="/jornal/mas/greenoper">Зеленые</a></li>
-    <li><a href="{% url 'mas_feeding' %}"> Подкормки</a></li>
-    <li><a href="{% url 'mas_proces' %}"> Обработки</a></li>
-  </ul>
-<hr>
-<ul style="list-style-type:none;">
-  <li><a href="/record/dung/{{request.user.username}}">Учет удобрений</a></li>
-  <li><a href="/record/preparat/{{request.user.username}}">Учет препаратов</a></li>
 
-</ul>
-<hr>
-<p><a href="{% url 'show_archiv' %}">Архив</a></p>
+<div class="card" style="width: auto;">
+  <div class="card-body">
+    <h6 class="card-title">Массовые операции:</h6>
+    <ul>
+      <li><a href="/jornal/mas/greenoper">Зеленые</a></li>
+      <li><a href="{% url 'mas_feeding' %}"> Подкормки</a></li>
+      <li><a href="{% url 'mas_proces' %}"> Обработки</a></li>
+    </ul>
+  </div>
 </div>
-</aside>
+<br>
+<div class="card" style="width: auto;">
+  <div class="card-body">
+    <h6 class="card-title">Учет:</h6>
+      <ul>
+        <li><a href="/record/dung/{{request.user.username}}">удобрений</a></li>
+        <li><a href="/record/preparat/{{request.user.username}}">препаратов</a></li>
+      </ul>
+  </div>
+</div>
+<hr>
+<div>
+  <p><a href="{% url 'show_archiv' %}">Архив</a></p>
+</div>
+

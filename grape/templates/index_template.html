@@ -7,53 +7,80 @@
     <title>{{title}}</title>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
     <link href="{% static 'app/css/style_app.css' %}" type="text/css" rel="stylesheet">
-<link rel="icon" href="data:;base64,=">
-    <script src="{% static 'app/js/tinymce.min.js' %}"></script>
+    <link rel="icon" href="data:;base64,=">
+
     {{ form.media }}
-<!--    <link href="{% static 'app/css/navgor.css' %}" type="text/css" rel="stylesheet">-->
 </head>
 <body>
-    <header class="container" id="header">
-        <img src="{% static 'app/img/logo.png' %}" width="110px" height="100px"> <span class="logo">Виноград</span>
-        
+    <header class="container-sm bg-white text-dark">
+        <img src="{% static 'app/img/logo.png' %}" width="110px" height="auto"> <span class="logo">Виноград</span>
+        <div class="row align-items-center bg-light">
+            <div class="col-sm-9">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                          <li class="nav-item">
+                          <a class="nav-link" href="/jornal/">Журнал работы</a>
+                        </li>
+                        {% else %}
+                             <li class="nav-item"></li>
+                        {% endif %}
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Справочники
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/sorts/">Сорта</a></li>
+                            <li><a class="dropdown-item" href="/preparats/">Препараты</a></li>
+                            <li><a class="dropdown-item" href="/dung/">Удобрения</a></li>
+                            <li><a class="dropdown-item" href="/sickpest/">Болезни и вредители</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+            </div>
+            <div class="col-lg fst-italic">
+
+           {% if request.user.is_authenticated %}
+                Добро пожаловать, <span style="font-weight: bold">{{ request.user.username}}</span>  |  <a href="{% url 'logout' %}">Выход</a>
+           {% else %}
+                <a href="{% url 'login' %}">Вход</a>  |  <a href="{% url 'registration' %}">Регистрация</a>
+           {% endif %}
+
+            </div>
+        </div>
     </header>
 
-    <nav class="container" id="navigator_top">
-        <ul class="menu-main" id="home">
-            <li><a href="/"> <i class="fa fa-home fa-fw"></i>Home </a></li>
-        {% if request.user.is_authenticated %}
-            <li><a href="/jornal/">Журнал работы</a></li>
-        {% else %}
-             <li></li>
-        {% endif %}
-        </ul>
-        <ul class="menu-main" id="menu">
-            <li><a href="/sorts/"> Сорта </a></li>
-            <li><a href="/preparats/" > Препараты </a></li>
-            <li><a href="/dung/"> Удобрения </a></li>
-            <li><a href="/sickpest/"> Болезни и вредители </a></li>
-        </ul>
-    </nav>
-    <section class="container" id="content">
-        <aside id="left">
-{% block left %}
-
-<!-- {% include 'app/enter.html' %}-->
-{% endblock %}
-
+<section class="container bg-light">
+  <div class="row">
+    <div class="col-sm-2">
+        <aside class="container">
+        {% block left %}
+        <!--  левый блок      -->
+        {% endblock %}
         </aside>
-        <section id="main">
-{% block content %}
-            <article>
-                основной контент
+    </div>
+    <div class="col-lg">
+           {% block content %}
+            <article class="container">
+    <!--                    основной контент-->
             </article>
-{% endblock %}
-        </section>
-    </section>
+           {% endblock %}
+    </div>
+  </div>
+</section>
 
-
-    <footer class="container" id="podval">
-         <span style="color: #3b635d; font-size:12px ">E&F &copy; 2024</span>
-    </footer>
+<footer class="container text-white mt-auto py-3 bg-grey text-center">
+     E&F &copy; 2024
+</footer>
+    <script src="{% static 'app/js/tinymce.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
