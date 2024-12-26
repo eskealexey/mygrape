@@ -55,9 +55,10 @@ def found(request):
         if str_ == '':
             return render(request, 'spravgrape/found.html',context=context)
         else:
-            data = SortGrape.objects.filter(name__contains=str_).all()
+            # data = SortGrape.objects.filter(name__contains=str_).all()
+            data = SortGrape.objects.filter(name__icontains =str_).all()
             if not data:
-                data = SortGrape.objects.filter(alias__contains=str_).all()
+                data = SortGrape.objects.filter(alias__icontains=str_).all()
             context = {
                 'data': data,
             }
