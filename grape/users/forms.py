@@ -3,13 +3,15 @@ from django.contrib.auth.models import User
 
 
 class UserRegistrationForm(forms.ModelForm):
+
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
     password2 = forms.CharField(label='Повторить пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-
+    first_name = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'class': 'form-input'}))
     class Meta:
         model = User
-        fields = ('username', 'password', 'password2')
+        fields = ('first_name', 'email','username', 'password', 'password2')
 
     def clean_password2(self):
         cd = self.cleaned_data
