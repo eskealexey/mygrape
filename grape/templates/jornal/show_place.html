@@ -26,7 +26,7 @@
             <span style="color:#E6855F; font-style:italic;">Обработка: {{ last_proc|safe }}<br></span>
         </td>
         <td width="50%">
-            <h5><a href="/jornal/notes/add/{{ place.id }}"><img src="{% static 'app/img/add.jpg' %}" width="20px" height="auto" title="Добавить"></a> Дневник: </h5>
+            <h5><a href="/jornal/notes/add/{{ place.id }}"><img src="/static/app/img/add.jpg" width="20px" height="auto" title="Добавить"></a> Дневник: </h5>
             <div style="font-size: 12px;">
     {%for note in page_obj %}
                 <a href="{% url 'show_note' note.id %}" title="Просмотреть запись">{{ note.date_add }}</a> - {{note.title_note }}
