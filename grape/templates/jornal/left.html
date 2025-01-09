@@ -5,21 +5,35 @@
 
 <div class="card" style="width: auto;">
   <div class="card-body">
-    <h6 class="card-title">Массовые операции:</h6>
-    <ul>
-      <li><a href="/jornal/mas/greenoper">Зеленые</a></li>
-      <li><a href="{% url 'mas_feeding' %}"> Подкормки</a></li>
-      <li><a href="{% url 'mas_proces' %}"> Обработки</a></li>
-    </ul>
+<!--    <h6 class="card-title">Массовые операции:</h6>-->
+    <p class="card-text">Массовые операции:</p>
+
+
+    <ul class="nav flex-column">
+  <li class="nav-item ">
+    <a class="nav-link active" aria-current="page" href="/jornal/mas/greenoper">Зеленые</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'mas_feeding' %}"> Подкормки</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'mas_proces' %}"> Обработки</a>
+  </li>
+
+</ul>
   </div>
 </div>
 <br>
 <div class="card" style="width: auto;">
   <div class="card-body">
-    <h6 class="card-title">Учет:</h6>
-      <ul>
-        <li><a href="/record/dung/{{request.user.username}}">удобрений</a></li>
-        <li><a href="/record/preparat/{{request.user.username}}">препаратов</a></li>
+    <p class="card-text">Учет:</p>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/record/dung/{{request.user.username}}">удобрений</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/record/preparat/{{request.user.username}}">препаратов</a>
+        </li>
       </ul>
   </div>
 </div>

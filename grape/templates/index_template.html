@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
@@ -14,27 +14,28 @@
 <body>
     <header class="container-sm bg-white text-dark">
         <img src="{% static 'app/img/logo.png' %}" width="110px" height="auto"> <span class="logo">Виноград</span>
-        <div class="row align-items-center  bg-secondary text-white">
-            <div class="col-sm-9">
-                <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="row align-items-center bg-secondary text-white">
+            <div class="col-sm-9 ">
+                <nav class="navbar navbar-expand-lg navbar-light bg-secondary text-white">
                   <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                      <ul class="navbar-nav">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                          <a class="nav-link  text-white active" aria-current="page" href="/">Home</a>
+                          <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        {% if request.user.is_authenticated %}
-                          <li class="nav-item">
-                          <a class="nav-link  text-white" href="/jornal/">Журнал работы</a>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="/jornal/">Журнал работы</a>
                         </li>
-                        {% else %}
-                             <li class="nav-item"></li>
-                        {% endif %}
+                    {% endif %}
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Справочники
                           </a>
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/sorts/">Сорта</a></li>
                             <li><a class="dropdown-item" href="/preparats/">Препараты</a></li>
                             <li><a class="dropdown-item" href="/dung/">Удобрения</a></li>
@@ -46,14 +47,12 @@
                   </div>
                 </nav>
             </div>
-            <div class="col-lg fst-italic">
-
-           {% if request.user.is_authenticated %}
-                Добро пожаловать, <span style="font-weight: bold">{{ request.user.first_name }}</span>  |  <a class="text-white" href="{% url 'logout' %}">Выход</a>
-           {% else %}
-                <a class="text-white" href="{% url 'login' %}">Вход</a>  |  <a class="text-white" href="{% url 'registration' %}">Регистрация</a>
-           {% endif %}
-
+            <div class="col-sm-3 fst-italic">
+               {% if request.user.is_authenticated %}
+                    Добро пожаловать, <span style="font-weight: bold">{{ request.user.first_name }}</span>  |  <a class="text-white" href="{% url 'logout' %}">Выход</a>
+               {% else %}
+                    <a class="text-white" href="{% url 'login' %}">Вход</a>  |  <a class="text-white" href="{% url 'registration' %}">Регистрация</a>
+               {% endif %}
             </div>
         </div>
     </header>

@@ -121,6 +121,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'plugins': 'paste',
     'paste_as_text': True,
     'toolbar': 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
+    # 'toolbar': 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
