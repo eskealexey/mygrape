@@ -11,6 +11,14 @@
     <script src="{% static 'app/js/tinymce.min.js' %}"></script>
     <link rel="icon" href="data:;base64,=">
     {{ form.media }}
+     <script>
+       tinymce.init({
+           selector: 'textarea',  // селектор для текстовой области
+           plugins: 'link image code table',
+           toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist | link image | table | code',
+           // (другие опции)
+       });
+   </script>
     <style>
     @media screen and (max-width: 600px) {
         table {
@@ -89,7 +97,7 @@
 </main>
 
 <footer class="container text-white mt-auto py-3 bg-grey text-center">
-     E&F &copy; 2024
+     E&F &copy; 2024 - 2025
 </footer>
 
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>

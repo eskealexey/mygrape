@@ -121,7 +121,15 @@ TINYMCE_DEFAULT_CONFIG = {
     'plugins': 'paste',
     'paste_as_text': False,
     'toolbar': 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
-    # 'toolbar': 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+    'table_default_attributes': {
+           'class': 'table',  # можно использовать классы Bootstrap
+       },
+       'table_default_styles': {
+           'width': '100%',
+           'border': '1px solid #ddd',
+           'border-collapse': 'collapse',
+       },
+       'content_css': '/static/app/css/style_app.css',  # путь к вашему CSS
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
