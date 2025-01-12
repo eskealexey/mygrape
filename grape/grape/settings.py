@@ -57,7 +57,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'grape.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -118,7 +117,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
-    'plugins': 'paste',
+    # 'plugins': 'paste',
+    'plugins': 'paste,autolink,lists,spellchecker,pagebreak,style,layer,table,save,advlink, image, media, link, emoticons, insertdatetime, preview, searchreplace, print, contextmenu, wordcount, fullscreen, horizontalrule,',
     'paste_as_text': False,
     'toolbar': 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
     'table_default_attributes': {
@@ -129,14 +129,15 @@ TINYMCE_DEFAULT_CONFIG = {
            'border': '1px solid #ddd',
            'border-collapse': 'collapse',
        },
-       'content_css': '/static/app/css/style_app.css',  # путь к вашему CSS
+       # 'content_css': '/static/app/css/style_app.css',  # путь к вашему CSS
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/files/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
 MEDIA_ROOT = BASE_DIR / 'files'
-
+# TINYMCE_JS_URL = os.path.join(BASE_DIR, 'static/app/js/tinymce.min.js')
+# TINYMCE_JS_ROOT = os.path.join(BASE_DIR, 'static/app/js/')
 
 try:
     from .local_settings import *
