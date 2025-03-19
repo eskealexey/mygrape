@@ -1,6 +1,6 @@
 from django.db import models
-
-from tinymce import models as tinymce_models
+from tinymce.models import HTMLField
+# from tinymce import models as tinymce_models
 
 
 # Create your models here.
@@ -55,7 +55,7 @@ class SortGrape(models.Model):
 
 class InfoGrape(models.Model):
     title = models.CharField(max_length=255, blank=True, verbose_name='название')
-    article = tinymce_models.HTMLField(blank=True, verbose_name='текст')
+    article = HTMLField(blank=True, verbose_name='текст')
     id_sort = models.ForeignKey(SortGrape, on_delete=models.CASCADE)
 
     def __str__(self):

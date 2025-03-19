@@ -7,10 +7,10 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Application definition
-
 INSTALLED_APPS = [
+    'grappelli',
+    'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'spravgrape',
     'tinymce',
+
     'app',
     'sickpest',
     'preparats',
@@ -110,17 +111,20 @@ STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 900,
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
-    # 'plugins': 'paste',
     'plugins': 'paste,autolink,lists,spellchecker,pagebreak,style,layer,table,save,advlink, image, media, link, emoticons, insertdatetime, preview, searchreplace, print, contextmenu, wordcount, fullscreen, horizontalrule,',
     'paste_as_text': False,
     'toolbar': 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
+    # 'file_picker_callback': '''
+    #     function(callback, value, meta) {
+    #         window.open('/admin/filebrowser/browse/?pop=1', '_blank');
+    #     }
+    #     ''',
     'table_default_attributes': {
            'class': 'table',  # можно использовать классы Bootstrap
        },
@@ -129,15 +133,31 @@ TINYMCE_DEFAULT_CONFIG = {
            'border': '1px solid #ddd',
            'border-collapse': 'collapse',
        },
+    'file_browser_callback': 'mce_filebrowser',
+}
        # 'content_css': '/static/app/css/style_app.css',  # путь к вашему CSS
+FILEBROWSER_DIRECTORY = ''
+DIRECTORY = ''
+
+# X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+FILEBROWSER_EXTENSIONS = {
+    'Image': ['.jpg', '.jpeg', '.png', '.gif', '.tiff', '.bmp'],
+    'Document': ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.txt'],
+    'Video': ['.mp4', '.mov', '.avi'],
+    'Audio': ['.mp3', '.wav'],
+}
+FILEBROWSER_SELECT_FORMATS = {
+    'file': ['Image', 'Document', 'Video', 'Audio'],
+    'image': ['Image'],
+    'document': ['Document'],
+    'media': ['Video', 'Audio'],
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/files/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
 MEDIA_ROOT = BASE_DIR / 'files'
-# TINYMCE_JS_URL = os.path.join(BASE_DIR, 'static/app/js/tinymce.min.js')
-# TINYMCE_JS_ROOT = os.path.join(BASE_DIR, 'static/app/js/')
+
 
 try:
     from .local_settings import *

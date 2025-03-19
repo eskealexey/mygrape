@@ -4,8 +4,11 @@ asgiref==3.8.1
 Avatar==0.1
 Django==5.1.4
 django-appconf==1.0.6
+django-filebrowser==4.0.3
+django-grappelli==3.0.9
 django-select2==8.2.3
 django-tinymce==4.1.0
+django_csp==3.8
 mysql-connector-python==9.1.0
 owner==0.0.10
 pillow==11.0.0
